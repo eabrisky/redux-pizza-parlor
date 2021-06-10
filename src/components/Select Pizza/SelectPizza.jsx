@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import axios from 'axios'
 
-function SelectPizza () {
+function SelectPizza() {
     
     //create a variable for dispatch to use
     const dispatch = useDispatch();
