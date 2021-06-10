@@ -12,7 +12,7 @@ const pizzaReducer = (state = [], action) => {
 } // end pizzaReducer
 
 const customerReducer = (state = [], action) => {
-    
+
     return state;
 } // end customerReducer
 
