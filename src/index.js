@@ -7,9 +7,15 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
 const pizzaReducer = (state = [], action) => {
+
     if (action.type === 'GET_PIZZA') {
         return action.payload;
     }
+
+    else if (action.type === 'CLEAR_ORDER') {
+        return [];
+    }
+    
     return state;
 } // end pizzaReducer
 
@@ -17,6 +23,8 @@ const customerReducer = (state = [], action) => {
     switch (action.type) {
         case 'ADD_CUSTOMER' :
             return [...state, action.payload];
+        case 'CLEAR_ORDER':
+            return [];
         default :
             return state;
     }
