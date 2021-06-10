@@ -1,0 +1,24 @@
+button {
+    margin-left: 8px;
+    margin-bottom: 16px;
+}
+
+.childDisplay {
+    background-color: #8B0000;
+    text-align: center;
+    color: burlywood;
+    margin: 32px 128px;
+
+}
+
+h2 {
+    padding-top: 24px;
+}
+
+img {
+    margin-top: 16px;
+}
+
+.parentDisplay {
+    background-color: blanchedalmond
+}

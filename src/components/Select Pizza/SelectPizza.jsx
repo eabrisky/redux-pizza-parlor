@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import axios from 'axios'
+import axios from 'axios';
+import './SelectPizza.css';
 
 function SelectPizza () {
     
@@ -32,25 +33,25 @@ function SelectPizza () {
     
     
     return (
-        <>
+        <div className="parentDisplay">
             <h2>Select Your Pizza</h2>
             <div>
                 {pizzaPies.map( (pizza, index) => 
                 
-                (<>
+                (<div className="childDisplay">
                 <img key={index} src={pizza.image_path}/>
                 <h3>{pizza.name}</h3>
                 <p>{pizza.description}</p>
-                <p>{pizza.price}
+                <p> $ {pizza.price}
                 <button>Add to Cart</button>
                 <button>Remove from Cart</button>
                 </p>
-                </>
+                </div>
                 )
 
                 )}
             </div>
-        </>
+        </div>
     )
 
 
