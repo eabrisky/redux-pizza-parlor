@@ -7,7 +7,9 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
 const pizzaReducer = (state = [], action) => {
-
+    if (action.type === 'GET_PIZZA') {
+        return action.payload;
+    }
     return state;
 } // end pizzaReducer
 
