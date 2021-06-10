@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
+import CustomerForm from '../Customer Form/CustomerForm'
 
 function App() {
 
@@ -12,7 +13,7 @@ function App() {
       
       <img src='images/pizza_photo.png' />
       <p>Pizza is great.</p>
-  
+      <CustomerForm />
     </div>
   );
 }
