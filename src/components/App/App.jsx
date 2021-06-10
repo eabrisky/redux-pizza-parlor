@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
+import CustomerForm from '../Customer Form/CustomerForm'
 import Checkout from '../Checkout/Checkout';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
 
       <img src='images/pizza_photo.png' />
       <p>Pizza is great.</p>
+      <CustomerForm />
      <Checkout />
     </div>
   );
