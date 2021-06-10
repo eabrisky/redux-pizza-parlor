@@ -33,9 +33,22 @@ function SelectPizza () {
     
     return (
         <>
+            <h2>Select Your Pizza</h2>
             <div>
-        {/* pictures of pizzas will go here */}
-        {/* will need to add buttons */}
+                {pizzaPies.map( (pizza, index) => 
+                
+                (<>
+                <img key={index} src={pizza.image_path}/>
+                <h3>{pizza.name}</h3>
+                <p>{pizza.description}</p>
+                <p>{pizza.price}
+                <button>Add to Cart</button>
+                <button>Remove from Cart</button>
+                </p>
+                </>
+                )
+
+                )}
             </div>
         </>
     )
