@@ -32,6 +32,14 @@ const customerReducer = (state = [], action) => {
     }
 } // end customerReducer
 
+const orderReducer = (state = [], action) => {
+    switch (action.type) {
+        case 'GET_ORDERS' :
+            return action.payload;
+        default :
+            return state;
+    }
+} // end orderReducer
 // Items in the cart:
 const checkoutReducer = (state = [], action) => {
     switch (action.type) {
@@ -48,7 +56,7 @@ const checkoutReducer = (state = [], action) => {
 const store = createStore(
 
     combineReducers({
-        pizzaReducer, customerReducer, checkoutReducer
+        pizzaReducer, customerReducer, orderReducer, checkoutReducer
     }),
     applyMiddleware(
         logger
