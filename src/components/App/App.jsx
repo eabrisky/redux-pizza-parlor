@@ -21,7 +21,7 @@ function App() {
       </header>
       <Router>
         <div>
-          <nav class="nav-bar">
+          <nav className="nav-bar">
             <ul>
               <nav>
                 <li>
