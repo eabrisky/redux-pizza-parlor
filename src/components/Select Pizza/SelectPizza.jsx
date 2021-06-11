@@ -30,6 +30,15 @@ function SelectPizza () {
         });
     }
 
+    let orderTotal = 0;
+        const total = () => {
+            for (let i = 0; i < checkoutOrder.length; i++) {
+                orderTotal += Number(checkoutOrder[i].price);
+            }
+            return orderTotal;
+        }
+        total();
+
     // need to create a function that will add pizza to an order
     const addPizza = (pizza) => {
         // console.log('add pizza clicker working');
@@ -45,6 +54,7 @@ function SelectPizza () {
         console.log(pizza);
         dispatch({
             type: 'CLEAR_CHECKOUT'
+        
         })
 
     }
