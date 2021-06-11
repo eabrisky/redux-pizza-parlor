@@ -5,6 +5,7 @@ import Welcome from "../Welcome/Welcome";
 import CustomerForm from "../Customer Form/CustomerForm";
 import Checkout from "../Checkout/Checkout";
 import SelectPizza from "../Select Pizza/SelectPizza";
+import Admin from "../Admin/Admin";
 import {
   Route,
   HashRouter as Router,
@@ -47,6 +48,9 @@ function App() {
               </Route>
               <Route path="/checkout">
                 <Checkout />
+              </Route>
+              <Route path="/admin">
+                <Admin />
               </Route>
             </ul>
           </nav>

@@ -22,10 +22,19 @@ const customerReducer = (state = [], action) => {
     }
 } // end customerReducer
 
+const orderReducer = (state = [], action) => {
+    switch (action.type) {
+        case 'GET_ORDERS' :
+            return action.payload;
+        default :
+            return state;
+    }
+} // end orderReducer
+
 const store = createStore(
 
     combineReducers({
-        pizzaReducer, customerReducer
+        pizzaReducer, customerReducer, orderReducer
     }),
     applyMiddleware(
         logger
