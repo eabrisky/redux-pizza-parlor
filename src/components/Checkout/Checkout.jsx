@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -19,28 +20,47 @@ function Checkout() {
     const handleCheckout = () => {
 
         console.log('in handleCheckout');
-        
-        for(let i = 0; i < pizzaOrder.cost.length; i++){
-            totalArray.push(pizzaOrder.cost[i]);
+
+        for (let i = 0; i < pizzaOrder.price.length; i++) {
+            totalArray.push(pizzaOrder.price[i]);
         };
 
-        for(let i = 0; i <totalArray.length;){
+        for (let i = 0; i < totalArray.length;) {
             total += totalArray[i];
         };
 
+        const postData = {
+            customerName : customerInfo.name,
+            streetAddress : customerInfo.streetAddress,
+            city : customerInfo.city,
+            zip : customerInfo.zip,
+            total : total,
+            type : customerInfo.type,
+            pizzas : [{
+                id : ,
+                quantity : ,
+            }]
+        }
+
         // send customer info, array of pizzas,
         // and order total to server
-
+        const sendOrder = () => {
+            axios.post( '/api/order', postData)
+                .then( response => {
+                    // clear the appropriate reducers (customer info & pizza order info)
+                    // this should clear the table?
+                    dispatch({
+                        type: 'CLEAR_ORDER',
+                    }); // end dispatch
+                }) // end .then
+                .catch( err => {
+                    console.log( err );
+                })
+        }
 
         // navigate user back to the select pizza page
         // history.push(route for select pizza)
         history.push('/cart');
-
-        // clear the appropriate reducers (customer info & pizza order info)
-        // this should clear the table?
-        dispatch({
-            type : 'CLEAR_ORDER',
-        }); // end dispatch
 
 
     } // end handleCheckout fn
