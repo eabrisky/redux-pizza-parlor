@@ -36,10 +36,6 @@ function Checkout() {
             zip : customerInfo.zip,
             total : total,
             type : customerInfo.type,
-            pizzas : [{
-                id : ,
-                quantity : ,
-            }]
         }
 
         // send customer info, array of pizzas,
