@@ -48,7 +48,8 @@ const checkoutReducer = (state = [], action) => {
             console.log(action.payload);
             return [...state, action.payload];
         case 'CLEAR_CHECKOUT' :
-            return [];
+            const matchPizza = pizza => pizza.id !== action.payload.id;
+            return state.filter(matchPizza);
         default :
             return state;
     } // end checkoutReducer
