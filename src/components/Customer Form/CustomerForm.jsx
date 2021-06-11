@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import {useDispatch} from 'react-redux';
 
 function CustomerForm() {
   const [customerName, setCustomerName] = useState();
@@ -8,36 +9,26 @@ function CustomerForm() {
   const [zip, setZip] = useState();
   const [type, setType] = useState();
 
-  // Create object variable to easily send in POST request
+  const dispatch = useDispatch();
+
+  // Create object variable to easily send in dispatch
   const newCustomer = {
     customer_name: customerName,
     street_address: streetAddress,
     city: city,
     zip: zip,
-    total: 0,
     type: type,
-    pizzas: [],
   };
 
   const customerSubmit = (event) => {
     event.preventDefault();
 
-    //axios POST request to add customer to database
-    axios
-      .post("/api/order", newCustomer)
-      .then((response) => {
-        setCustomerName("");
-        setStreetAddress("");
-        setCity("");
-        setZip("");
-        setType("");
+    dispatch({
+        type: 'ADD_CUSTOMER',
+        payload: newCustomer
+    })
 
-        //TODO do we need to refresh anything? Customer list on Admin side?
-      })
-      .catch((err) => {
-        console.log("Error while posting new customer", err);
-      });
-  };
+}
 
   return (
     <div>
