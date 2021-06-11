@@ -10,6 +10,7 @@ function Checkout() {
 
     const customerInfo = useSelector(store => store.customerReducer);
     const checkoutOrder = useSelector(store => store.checkoutReducer);
+
     // [x] get customer info (useSelector)
     // [x] get pizza order info (array) (useSelector)
     // [x] display in return (populate table)
@@ -23,19 +24,25 @@ function Checkout() {
 
         
 
-        // const postData = {
-        //     customerName : customerInfo.customer_name,
-        //     streetAddress : customerInfo.street_address,
-        //     city : customerInfo.city,
-        //     zip : customerInfo.zip,
-        //     total : total,
-        //     type : customerInfo.type,
-        // }
+        const postData = {
+            customerName : customerInfo[0].customer_name,
+            streetAddress : customerInfo[0].street_address,
+            city : customerInfo[0].city,
+            zip : customerInfo[0].zip,
+            total : 0,
+            type : customerInfo[0].type,
+            pizzas : [{
+                id : checkoutOrder[0].id,
+                quantity : 1
+            }]
+        }
+
+        console.log(postData);
 
         // send customer info, array of pizzas,
         // and order total to server
         const sendOrder = () => {
-            axios.post( '/api/order', postData)
+            axios.post( '/api/order', postData )
                 .then( response => {
                     // clear the appropriate reducers (customer info & pizza order info)
                     // this should clear the table?
@@ -47,6 +54,8 @@ function Checkout() {
                     console.log( err );
                 })
         }
+
+        sendOrder();
 
         // navigate user back to the select pizza page
         // history.push(route for select pizza)
