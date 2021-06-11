@@ -40,7 +40,14 @@ function SelectPizza () {
         });
     }
 
-    // need to create a function that will delete 
+    // need to create a function that will delete pizza from order
+    const deletePizza = (pizza) => {
+        console.log(pizza);
+        dispatch({
+            type: 'CLEAR_CHECKOUT'
+        })
+
+    }
     
     
     return (
@@ -55,7 +62,7 @@ function SelectPizza () {
                 <p>{pizza.description}</p>
                 <p> $ {pizza.price}
                 <button onClick={ () => addPizza(pizza)}>Add to Cart</button>
-                <button>Remove from Cart</button>
+                <button onClick={ () => deletePizza(pizza)}>Remove from Cart</button>
                 </p>
                 </div>
                 )
