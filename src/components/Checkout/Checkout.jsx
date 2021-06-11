@@ -11,7 +11,7 @@ function Checkout() {
     let total = 0;
 
     const customerInfo = useSelector(store => store.customerReducer);
-    const pizzaOrder = useSelector(store => store.pizzaReducer);
+    const pizzaOrder = useSelector(store => store.checkoutReducer);
 
     // [x] get customer info (useSelector)
     // [x] get pizza order info (array) (useSelector)
