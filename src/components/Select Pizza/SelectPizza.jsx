@@ -11,6 +11,8 @@ function SelectPizza () {
     //need to bring in the pizzaReducer from the store to display on DOM
     const pizzaPies = useSelector(store => store.pizzaReducer);
 
+    const checkoutReducer = useSelector(store => store.checkoutReducer)
+
     useEffect(() => {
         console.log('In useEffect');
         getPizza();
@@ -30,6 +32,15 @@ function SelectPizza () {
         });
     }
 
+    // let orderTotal = 0;
+    //     const total = () => {
+    //         for (let i = 0; i < checkoutOrder.length; i++) {
+    //             orderTotal += Number(checkoutOrder[i].price);
+    //         }
+    //         return orderTotal;
+    //     }
+    //     total();
+
     // need to create a function that will add pizza to an order
     const addPizza = (pizza) => {
         // console.log('add pizza clicker working');
@@ -40,7 +51,15 @@ function SelectPizza () {
         });
     }
 
-    // need to create a function that will delete 
+    // need to create a function that will delete pizza from order
+    const deletePizza = (pizza) => {
+        console.log(pizza);
+        dispatch({
+            type: 'CLEAR_CHECKOUT',
+            payload: pizza
+        })
+
+    }
     
     
     return (
@@ -55,7 +74,7 @@ function SelectPizza () {
                 <p>{pizza.description}</p>
                 <p> $ {pizza.price}
                 <button onClick={ () => addPizza(pizza)}>Add to Cart</button>
-                <button>Remove from Cart</button>
+                <button onClick={ () => deletePizza(pizza)}>Remove from Cart</button>
                 </p>
                 </div>
                 )
