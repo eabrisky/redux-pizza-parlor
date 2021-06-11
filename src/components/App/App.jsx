@@ -18,7 +18,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1 className="App-title">Prime Pizza</h1>
+        <div>Total: $0</div>
       </header>
+      
       <Router>
         <div>
           <nav className="nav-bar">
