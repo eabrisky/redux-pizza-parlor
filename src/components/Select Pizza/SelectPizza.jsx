@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import axios from 'axios'
+import axios from 'axios';
+import './SelectPizza.css';
 
 function SelectPizza() {
     
@@ -8,7 +9,7 @@ function SelectPizza() {
     const dispatch = useDispatch();
     
     //need to bring in the pizzaReducer from the store to display on DOM
-    const pizzaPies = useSelector(store => store.pizzaReducer)
+    const pizzaPies = useSelector(store => store.pizzaReducer);
 
     useEffect(() => {
         console.log('In useEffect');
@@ -29,15 +30,39 @@ function SelectPizza() {
         });
     }
 
+    // need to create a function that will add pizza to an order
+    const addPizza = (pizza) => {
+        // console.log('add pizza clicker working');
+         console.log(pizza);
+        dispatch({
+            type: 'CHECKOUT',
+            payload: pizza 
+        });
+    }
+
+    // need to create a function that will delete 
     
     
     return (
-        <>
+        <div className="parentDisplay">
+            <h2>Select Your Pizza</h2>
             <div>
-        {/* pictures of pizzas will go here */}
-        {/* will need to add buttons */}
+                {pizzaPies.map( (pizza, index) => 
+                
+                (<div className="childDisplay">
+                <img key={index} src={pizza.image_path}/>
+                <h3>{pizza.name}</h3>
+                <p>{pizza.description}</p>
+                <p> $ {pizza.price}
+                <button onClick={ () => addPizza(pizza)}>Add to Cart</button>
+                <button>Remove from Cart</button>
+                </p>
+                </div>
+                )
+
+                )}
             </div>
-        </>
+        </div>
     )
 
 
