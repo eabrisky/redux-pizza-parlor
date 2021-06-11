@@ -28,6 +28,7 @@ const customerReducer = (state = [], action) => {
 const checkoutReducer = (state = [], action) => {
     switch (action.type) {
         case 'CHECKOUT' :
+            console.log(action.payload);
             return [...state, action.payload];
         case 'CLEAR_CHECKOUT' :
             return [];

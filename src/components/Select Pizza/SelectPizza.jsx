@@ -9,7 +9,7 @@ function SelectPizza () {
     const dispatch = useDispatch();
     
     //need to bring in the pizzaReducer from the store to display on DOM
-    const pizzaPies = useSelector(store => store.pizzaReducer)
+    const pizzaPies = useSelector(store => store.pizzaReducer);
 
     useEffect(() => {
         console.log('In useEffect');
@@ -31,14 +31,16 @@ function SelectPizza () {
     }
 
     // need to create a function that will add pizza to an order
-    const addPizza = (pizzaPies) => {
+    const addPizza = (pizza) => {
         // console.log('add pizza clicker working');
+         console.log(pizza);
         dispatch({
             type: 'CHECKOUT',
-            payload: pizzaPies
-        })
+            payload: pizza 
+        });
     }
 
+    // need to create a function that will delete 
     
     
     return (
@@ -52,7 +54,7 @@ function SelectPizza () {
                 <h3>{pizza.name}</h3>
                 <p>{pizza.description}</p>
                 <p> $ {pizza.price}
-                <button onClick={addPizza}>Add to Cart</button>
+                <button onClick={ () => addPizza(pizza)}>Add to Cart</button>
                 <button>Remove from Cart</button>
                 </p>
                 </div>
