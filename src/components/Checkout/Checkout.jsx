@@ -4,7 +4,10 @@ import { useHistory } from 'react-router-dom';
 
 function Checkout() {
 
-    dispatch = useDispatch();
+    const dispatch = useDispatch();
+    const history = useHistory();
+    let totalArray = [];
+    let total = 0;
 
     const customerInfo = useSelector(store => store.customerReducer);
     const pizzaOrder = useSelector(store => store.pizzaReducer);
@@ -16,7 +19,14 @@ function Checkout() {
     const handleCheckout = () => {
 
         console.log('in handleCheckout');
-        // history=useHistory();
+        
+        for(let i = 0; i < pizzaOrder.cost.length; i++){
+            totalArray.push(pizzaOrder.cost[i]);
+        };
+
+        for(let i = 0; i <totalArray.length;){
+            total += totalArray[i];
+        };
 
         // send customer info, array of pizzas,
         // and order total to server
@@ -29,8 +39,9 @@ function Checkout() {
         // clear the appropriate reducers (customer info & pizza order info)
         // this should clear the table?
         dispatch({
-            type : 'CLEAR_ORDER'
+            type : 'CLEAR_ORDER',
         }); // end dispatch
+
 
     } // end handleCheckout fn
 
@@ -39,9 +50,9 @@ function Checkout() {
             <h2>Step 3: Checkout</h2>
             <p>{customerInfo.customerName}</p>
             <p>{customerInfo.streetAddress}</p>
-            <p>{city}</p>
-            <p>{zip}</p>
-            <p>For {type}</p>
+            <p>{customerInfo.city}</p>
+            <p>{customerInfo.zip}</p>
+            <p>For {customerInfo.type}</p>
             <table>
                 <thead>
                     <tr>
@@ -54,12 +65,12 @@ function Checkout() {
                     {pizzaOrder.map((pizza, index) => {
                         return (<tr key={index}>
                             <td>{pizza.name}</td>
-                            <td>{pizza.cost}</td>
+                            <td>{pizza.price}</td>
                         </tr>)
                     })}
                 </tbody>
             </table>
-            <h2>Total: ---Sum of all pizzas (put on right side of page)---</h2>
+            <h2>Total: ${total}</h2>
             <button onClick={handleCheckout}>CHECKOUT</button>
         </>
     )
