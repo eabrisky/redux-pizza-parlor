@@ -1,0 +1,12 @@
+h2 {
+    background-color: lightgrey;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tr-border {
+    border: 1px solid black;
+}
