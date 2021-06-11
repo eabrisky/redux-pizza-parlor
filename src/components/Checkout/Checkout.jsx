@@ -7,36 +7,30 @@ function Checkout() {
 
     const dispatch = useDispatch();
     const history = useHistory();
-    let totalArray = [];
-    let total = 0;
 
     const customerInfo = useSelector(store => store.customerReducer);
-    const pizzaOrder = useSelector(store => store.checkoutReducer);
-
+    const checkoutOrder = useSelector(store => store.checkoutReducer);
     // [x] get customer info (useSelector)
     // [x] get pizza order info (array) (useSelector)
     // [x] display in return (populate table)
+
+    console.log(customerInfo);
+    console.log(checkoutOrder);
 
     const handleCheckout = () => {
 
         console.log('in handleCheckout');
 
-        for (let i = 0; i < pizzaOrder.price.length; i++) {
-            totalArray.push(pizzaOrder.price[i]);
-        };
+        
 
-        for (let i = 0; i < totalArray.length;) {
-            total += totalArray[i];
-        };
-
-        const postData = {
-            customerName : customerInfo.name,
-            streetAddress : customerInfo.streetAddress,
-            city : customerInfo.city,
-            zip : customerInfo.zip,
-            total : total,
-            type : customerInfo.type,
-        }
+        // const postData = {
+        //     customerName : customerInfo.customer_name,
+        //     streetAddress : customerInfo.street_address,
+        //     city : customerInfo.city,
+        //     zip : customerInfo.zip,
+        //     total : total,
+        //     type : customerInfo.type,
+        // }
 
         // send customer info, array of pizzas,
         // and order total to server
@@ -64,11 +58,18 @@ function Checkout() {
     return (
         <>
             <h2>Step 3: Checkout</h2>
-            <p>{customerInfo.customerName}</p>
-            <p>{customerInfo.streetAddress}</p>
-            <p>{customerInfo.city}</p>
-            <p>{customerInfo.zip}</p>
-            <p>For {customerInfo.type}</p>
+            {customerInfo.map((customer, i) => {
+                return (<><p key={i}>
+                    {customer.customer_name}
+                    <br />
+                    {customer.street_address}
+                    <br />
+                    {customer.city}
+                    <br />
+                    {customer.zip}
+                </p>
+                <p className="deliveryType">{customer.type}</p></>)
+            })}
             <table>
                 <thead>
                     <tr>
@@ -78,7 +79,7 @@ function Checkout() {
                 </thead>
                 <tbody>
                     {/* .map(pizza & cost) */}
-                    {pizzaOrder.map((pizza, index) => {
+                    {checkoutOrder.map((pizza, index) => {
                         return (<tr key={index}>
                             <td>{pizza.name}</td>
                             <td>{pizza.price}</td>
@@ -86,7 +87,7 @@ function Checkout() {
                     })}
                 </tbody>
             </table>
-            <h2>Total: ${total}</h2>
+            <h2>Total: $0</h2>
             <button onClick={handleCheckout}>CHECKOUT</button>
         </>
     )

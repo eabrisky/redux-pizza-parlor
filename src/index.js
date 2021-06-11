@@ -24,6 +24,7 @@ const pizzaReducer = (state = [], action) => {
 const customerReducer = (state = [], action) => {
     switch (action.type) {
         case 'ADD_CUSTOMER' :
+            console.log(action.payload);
             return [...state, action.payload];
         case 'CLEAR_ORDER':
             return [];
