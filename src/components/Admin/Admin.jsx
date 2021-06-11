@@ -32,13 +32,15 @@ function Admin() {
         <div>
             <h2>Admin</h2>
             <table className="center">
+                <thead>
                 <tr className="tr-border">
                     <th>Name</th>
                     <th>Time Order Placed</th>
                     <th>Type</th>
                     <th>Cost</th>
                 </tr>
-                
+                </thead>
+                <tbody>
                     {orderList.map( (orders, index) => {
                         return(
                             <>
@@ -52,7 +54,7 @@ function Admin() {
                             );
                             
                         })}
-                
+                </tbody>
             </table>
             <button onClick={() => customerOrder()}>Get Orders</button>
         </div>
