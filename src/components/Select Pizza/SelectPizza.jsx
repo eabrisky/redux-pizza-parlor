@@ -30,6 +30,15 @@ function SelectPizza () {
         });
     }
 
+    // need to create a function that will add pizza to an order
+    const addPizza = (pizzaPies) => {
+        // console.log('add pizza clicker working');
+        dispatch({
+            type: 'CHECKOUT',
+            payload: pizzaPies
+        })
+    }
+
     
     
     return (
@@ -43,7 +52,7 @@ function SelectPizza () {
                 <h3>{pizza.name}</h3>
                 <p>{pizza.description}</p>
                 <p> $ {pizza.price}
-                <button>Add to Cart</button>
+                <button onClick={addPizza}>Add to Cart</button>
                 <button>Remove from Cart</button>
                 </p>
                 </div>

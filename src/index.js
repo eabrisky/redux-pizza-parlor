@@ -13,6 +13,8 @@ const pizzaReducer = (state = [], action) => {
     return state;
 } // end pizzaReducer
 
+
+
 const customerReducer = (state = [], action) => {
     switch (action.type) {
         case 'ADD_CUSTOMER' :
