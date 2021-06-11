@@ -1,8 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
 import {useDispatch} from 'react-redux';
+import {useHistory} from 'react-router-dom';
+import "./CustomerForm.css"
 
-function CustomerForm() {
+
+function CustomerForm () {
   const [customerName, setCustomerName] = useState();
   const [streetAddress, setStreetAddress] = useState();
   const [city, setCity] = useState();
@@ -10,6 +13,7 @@ function CustomerForm() {
   const [type, setType] = useState();
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   // Create object variable to easily send in dispatch
   const newCustomer = {
@@ -28,34 +32,44 @@ function CustomerForm() {
         payload: newCustomer
     })
 
-}
+    history.push('/checkout');
+  }
+
 
   return (
     <div>
       <div>
         <h2>Step 2: Customer Information</h2>
       </div>
-      <form onSubmit={customerSubmit}>
+      <form className="form" onSubmit={customerSubmit}>
+          <div>
         <input
           placeholder="Name"
           value={customerName}
           onChange={(event) => setCustomerName(event.target.value)}
         />
+        </div>
+        <div>
         <input
           placeholder="Street Address"
           value={streetAddress}
           onChange={(event) => setStreetAddress(event.target.value)}
         />
+        </div>
+        <div>
         <input
           placeholder="City"
           value={city}
           onChange={(event) => setCity(event.target.value)}
         />
+        </div>
+        <div>
         <input
           placeholder="Zip"
           value={zip}
           onChange={(event) => setZip(event.target.value)}
         />
+        </div>
         <div>
           <input
             type="radio"
