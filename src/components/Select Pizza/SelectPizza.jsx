@@ -11,6 +11,8 @@ function SelectPizza () {
     //need to bring in the pizzaReducer from the store to display on DOM
     const pizzaPies = useSelector(store => store.pizzaReducer);
 
+    const checkoutReducer = useSelector(store => store.checkoutReducer)
+
     useEffect(() => {
         console.log('In useEffect');
         getPizza();
@@ -30,14 +32,14 @@ function SelectPizza () {
         });
     }
 
-    let orderTotal = 0;
-        const total = () => {
-            for (let i = 0; i < checkoutOrder.length; i++) {
-                orderTotal += Number(checkoutOrder[i].price);
-            }
-            return orderTotal;
-        }
-        total();
+    // let orderTotal = 0;
+    //     const total = () => {
+    //         for (let i = 0; i < checkoutOrder.length; i++) {
+    //             orderTotal += Number(checkoutOrder[i].price);
+    //         }
+    //         return orderTotal;
+    //     }
+    //     total();
 
     // need to create a function that will add pizza to an order
     const addPizza = (pizza) => {
@@ -53,8 +55,8 @@ function SelectPizza () {
     const deletePizza = (pizza) => {
         console.log(pizza);
         dispatch({
-            type: 'CLEAR_CHECKOUT'
-        
+            type: 'CLEAR_CHECKOUT',
+            payload: pizza
         })
 
     }
